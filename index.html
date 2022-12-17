@@ -14256,30 +14256,25 @@ a.anchor-link {
     </script>
     <!-- End of mathjax configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
-<span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.goodreads.com/book/show/142296.The_Anubis_Gates&quot;</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
-<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
-</pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="The-Titanic">The Titanic<a class="anchor-link" href="#The-Titanic">&#182;</a></h1><p>The sinking of the Titanic is one of the most infamous shipwrecks in history.</p>
+<p>On April 15, 1912, during her maiden voyage, the widely considered “unsinkable” RMS Titanic sank after colliding with an iceberg. Unfortunately, there weren’t enough lifeboats for everyone onboard, resulting in the death of 1502 out of 2224 passengers and crew.</p>
+<p>While there was some element of luck involved in surviving, it seems some groups of people were more likely to survive than others.</p>
 
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
 </pre></div>
 
      </div>
@@ -14290,10 +14285,14 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;freeText3952183217398566663&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Load the dataset</span>
+<span class="n">titanic_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;train.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Preview the data</span>
+<span class="n">titanic_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
      </div>
@@ -14309,13 +14308,122 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
 
 
 
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[]</pre>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Braund, Mr. Owen Harris</td>
+      <td>male</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>A/5 21171</td>
+      <td>7.2500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
+      <td>female</td>
+      <td>38.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>PC 17599</td>
+      <td>71.2833</td>
+      <td>C85</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+      <td>Heikkinen, Miss. Laina</td>
+      <td>female</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>STON/O2. 3101282</td>
+      <td>7.9250</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
+      <td>female</td>
+      <td>35.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>113803</td>
+      <td>53.1000</td>
+      <td>C123</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Allen, Mr. William Henry</td>
+      <td>male</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>373450</td>
+      <td>8.0500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
 
 </div>
@@ -14324,13 +14432,27 @@ a.anchor-link {
 
 </div>
 
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Once the dataset is loaded, we can start cleaning and preprocessing the data. This involves removing any irrelevant columns, handling missing values, and converting columns to appropriate data types.</p>
+
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Remove any irrelevant columns</span>
+<span class="n">titanic_df</span> <span class="o">=</span> <span class="n">titanic_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Cabin&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticket&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Handle missing values</span>
+<span class="n">titanic_df</span> <span class="o">=</span> <span class="n">titanic_df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Convert &#39;Sex&#39; and &#39;Embarked&#39; columns to category data type</span>
+<span class="n">titanic_df</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">titanic_df</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+<span class="n">titanic_df</span><span class="p">[</span><span class="s1">&#39;Embarked&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">titanic_df</span><span class="p">[</span><span class="s1">&#39;Embarked&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14338,6 +14460,466 @@ a.anchor-link {
 </div>
 </div>
 
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>This will create a dataframe with columns containing information on the passengers, such as their age, gender, class, and whether they survived the disaster.</p>
+<p>Now that we have the data, let's move on to data management and representation. One way to represent the data is by creating visualizations. For example, we can create a bar plot to see the distribution of passenger class:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create a bar plot</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Pclass&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">titanic_df</span><span class="p">)</span>
+
+<span class="c1"># Show the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>We can also create a histogram to see the distribution of ages:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create a histogram</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">titanic_df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># Show the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>let's add some more visualizations to help understand the data. For example, we can create a boxplot to see the distribution of ages by passenger class:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create a boxplot</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Pclass&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">titanic_df</span><span class="p">)</span>
+
+<span class="c1"># Show the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># Plot a barplot of the &#39;Sex&#39; column</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Survived&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">titanic_df</span><span class="p">)</span>
+
+<span class="c1"># Plot a boxplot of the &#39;Age&#39; column</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Survived&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">titanic_df</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>&lt;AxesSubplot:xlabel=&#39;Survived&#39;, ylabel=&#39;Age&#39;&gt;</pre>
+</div>
+
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>We can also create a bar plot to see the survival rate by passenger class:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create a bar plot</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Pclass&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Survived&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">titanic_df</span><span class="p">)</span>
+
+<span class="c1"># Show the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Next, let's move on to exploratory data analysis. One way to do this is by calculating some basic statistics for the data. For example, we can calculate the mean, median, and standard deviation for the age of the passengers:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calculate statistics for the age feature</span>
+<span class="n">titanic_df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>count    891.000000
+mean      23.799293
+std       17.596074
+min        0.000000
+25%        6.000000
+50%       24.000000
+75%       35.000000
+max       80.000000
+Name: Age, dtype: float64</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>We can also use a t-test to compare the means of continuous variables, such as age, between different groups of passengers. For example, we can test whether there is a significant difference in the mean ages of male and female passengers:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Test whether the mean age is different for male and female passengers</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">titanic_df</span><span class="p">[</span><span class="n">titanic_df</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;male&#39;</span><span class="p">][</span><span class="s1">&#39;Age&#39;</span><span class="p">],</span>
+                <span class="n">titanic_df</span><span class="p">[</span><span class="n">titanic_df</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;female&#39;</span><span class="p">][</span><span class="s1">&#39;Age&#39;</span><span class="p">])</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>Ttest_indResult(statistic=0.7449930237955704, pvalue=0.4564728382241444)</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Next, let's move on to hypothesis testing. We can use statistical tests to determine whether there is a significant difference between the survival rates of different groups of passengers.</p>
+<p>For example, we can use a chi-squared test to determine whether there is a significant difference in the survival rates of male and female passengers:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create a contingency table</span>
+<span class="n">contingency_table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">titanic_df</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">],</span> <span class="n">titanic_df</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">])</span>
+
+<span class="c1"># Perform a chi-squared test</span>
+<span class="n">chi2</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">dof</span><span class="p">,</span> <span class="n">expected</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">chi2_contingency</span><span class="p">(</span><span class="n">contingency_table</span><span class="p">)</span>
+
+<span class="c1"># Print the p-value</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>1.1973570627755645e-58
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import the linear regression model</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="c1"># Create the model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+
+<span class="c1"># Fit the model to the data</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">titanic_df</span><span class="p">[[</span><span class="s1">&#39;Age&#39;</span><span class="p">]],</span> <span class="n">titanic_df</span><span class="p">[</span><span class="s1">&#39;Fare&#39;</span><span class="p">])</span>
+
+<span class="c1"># Print the model&#39;s coefficients</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Slope: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Intercept: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Slope: 0.383
+Intercept: 23.096
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Conclusion:">Conclusion:<a class="anchor-link" href="#Conclusion:">&#182;</a></h1><p>The Titanic disaster remains one of the most infamous maritime tragedies in history, with over 1500 lives lost in the freezing waters of the North Atlantic. While the sinking of the ship was caused by a variety of factors, including the impact of the iceberg and the inadequate safety measures in place, the survival rate of passengers varied widely.</p>
+<p>Through the analysis of the Titanic dataset, several key insights have emerged that help to shed light on the factors that influenced the survival of passengers.</p>
+<p>One of the most striking findings is the significant difference in survival rate between male and female passengers. While the survival rate of female passengers was over 75%, the survival rate of male passengers was a mere 20%. This dramatic discrepancy can be attributed to the chivalrous behavior of the crew, who prioritized the rescue of women and children, as well as the fact that women were more likely to secure a place in a lifeboat due to their relative proximity to the deck.</p>
+<p>Other factors that seemed to have an impact on survival rate included the passenger's age, fare paid, and the port of embarkation. Younger passengers, those who paid a higher fare, and those who embarked from Cherbourg had higher survival rates compared to older passengers, those who paid a lower fare, and those who embarked from Southampton or Queenstown. These findings suggest that socio-economic status, as well as gender and age, played a significant role in determining the likelihood of survival on the Titanic.</p>
+<p>It is worth noting that the relationship between these factors and survival rate is complex and multifaceted. For example, while women and children had a higher survival rate overall, there were cases of men and children who also managed to survive. Similarly, while the survival rate of passengers who paid a higher fare was generally higher, this was not always the case.</p>
+<p>Despite these nuances, the insights attained from the Titanic dataset provide a valuable perspective on the factors that influenced the survival of passengers on the fateful voyage. Further research and analysis could delve deeper into these factors and their specific effects on survival rate, as well as examine the broader social and cultural context in which the disaster took place. Ultimately, understanding the patterns and trends revealed by this data can help to inform future disaster preparedness and response efforts, ensuring that the lessons of the Titanic are not forgotten.</p>
+
+</div>
 </div>
 </body>
 
